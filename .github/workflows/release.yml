@@ -4,9 +4,6 @@ on:
   push:
     tags: [ 'v*' ]
 
-env:
-  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
 jobs:
   test:
     name: Test
@@ -81,8 +78,3 @@ jobs:
           asset_name: alerta-webui.tar.gz
           asset_content_type: application/gzip
 
-      - uses: act10ns/slack@v2
-        with:
-          status: ${{ job.status }}
-          steps: ${{ toJson(steps) }}
-        if: failure()
