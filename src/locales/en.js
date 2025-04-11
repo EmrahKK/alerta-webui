@@ -129,6 +129,7 @@ export const en = {
   Duration: 'Duration',
   LastReceiveId: 'Last Receive ID',
   LastNote: 'Last Note',
+  'Long running alert (> 1 hour)': 'Long running alert (> 1 hour)',
 
   // Alert list filter
   Filters: 'Filters',

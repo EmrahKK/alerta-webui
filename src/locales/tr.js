@@ -131,6 +131,7 @@ export const tr = {
   Duration: 'Süre',
   LastReceiveId: 'Son Alınan ID',
   LastNote: 'Son Not',
+  'Long running alert (> 1 hour)': 'Uzun süreli uyarı (> 1 saat)',
 
   // Alert list filter
   Filters: 'Süzgeçler',

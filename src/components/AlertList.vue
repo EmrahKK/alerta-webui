@@ -113,7 +113,22 @@
                 :style="fontStyle"
               >
                 {{ props.item.status | capitalize }}
-
+              </span>
+              <span
+                v-if="hasLongReceiveTimeDiff(props.item)"
+                class="pl-2"
+              >
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-icon
+                      v-bind="attrs"
+                      small
+                      color="red"
+                      v-on="on"
+                    >whatshot</v-icon>
+                  </template>
+                  <span>{{ $t('Long running alert (> 1 hour)') }}</span>
+                </v-tooltip>
               </span>
               <span
                 v-if="showNotesIcon"
@@ -622,6 +637,14 @@ export default {
     lastNote(item) {
       const note = item.history.filter(h => h.type == 'note' || h.type == 'dismiss').pop()
       return note && note.type == 'note' ? note.text : ''
+    },
+    hasLongReceiveTimeDiff(item) {
+      // Check if the difference between lastReceiveTime and receiveTime is greater than 1 hour
+      if (!item.receiveTime || !item.lastReceiveTime) return false
+      const receiveTime = moment(item.receiveTime)
+      const lastReceiveTime = moment(item.lastReceiveTime)
+      const diffInHours = lastReceiveTime.diff(receiveTime, 'hours')
+      return diffInHours >= 1
     },
     valueWidth() {
       return this.$store.getters.getPreference('valueWidth')

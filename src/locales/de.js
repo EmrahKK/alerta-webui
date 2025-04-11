@@ -129,6 +129,7 @@ export const de = {
   Duration: 'Duration',
   LastReceiveId: 'Letze empf. ID',
   LastNote: 'Letzte Notiz',
+  'Long running alert (> 1 hour)': 'Lang laufende Warnung (> 1 Stunde)',
 
   // Alert list filter
   Filters: 'Filter',
